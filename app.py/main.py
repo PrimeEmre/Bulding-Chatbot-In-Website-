@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, jsonify, session
 import requests
+import json
 
 app = Flask(__name__)
-app.secret_key = "emre_ai_secret_123"  # needed to store session data
+app.secret_key = "emre_ai_secret_123"
 
 # ─────────────────────────────────────────
 # ROUTE: Main page
@@ -45,7 +46,7 @@ def chat():
     try:
         # Send request to Ollama
         response = requests.post(
-            "http://localhost:11434/api/generate",
+            "http://localhost:11434/api/chat",
             json=payload,
             timeout=120
         )
